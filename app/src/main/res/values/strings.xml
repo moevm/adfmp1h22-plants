@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Plants</string>
+    <string name="let_s_recognize_the_plant">Let\'s recognize the plant</string>
+    <string name="plant_catalogue">Plant catalogue</string>
+    <string name="plants_recognizer">Plants recognizer</string>
+    <string name="catalogue">Catalogue</string>
+    <string name="recognizer">Recognizer</string>
+    <string name="white">White</string>
+    <string name="green">Green</string>
+    <string name="multicolored">Multicolored</string>
+    <string name="small">Small</string>
+    <string name="big">Big</string>
+    <string name="narrow">Narrow</string>
+    <string name="broad">Broad</string>
+    <string name="medium">Medium</string>
+</resources>
