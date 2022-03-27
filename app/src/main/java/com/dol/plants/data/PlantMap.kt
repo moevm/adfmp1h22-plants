@@ -2,115 +2,124 @@ package com.dol.plants.data
 
 object PlantMap {
 
-    class PlantProps(
-        val leafWidth: BroadOrNarrowLeaves = BroadOrNarrowLeaves.NARROW_LEAVES,
-        val leafLength: LongOrShortLeaves = LongOrShortLeaves.SHORT_LEAVES,
-        val leafColor: ColorLeaf = ColorLeaf.GREEN,
-        val plantSize: BigOrSmallPlant = BigOrSmallPlant.SMALL_PLANT,
+    class Color(
+        val red: UByte = 0u,
+        val green: UByte = 0u,
+        val blue: UByte = 0u
     ) {
-        enum class BroadOrNarrowLeaves {
-            BROAD_LEAVES, NARROW_LEAVES
+        override fun toString(): String {
+            return "rgb(${red}, ${green}, ${blue})"
+        }
+    }
+
+    class PlantProps(
+        val width: UIntRange,
+        val leafLength: UIntRange,
+        val leafColor: Color,
+        val height: UIntRange
+    ) {
+
+        fun toList(): List<String> {
+            return listOf(
+                "Width: ${rangeToString(width)}",
+                "Leaf length: ${rangeToString(leafLength)}",
+                "LeafColor: $leafColor",
+                "Height: ${rangeToString(height)}"
+            )
         }
 
-        enum class LongOrShortLeaves {
-            LONG_LEAVES, SHORT_LEAVES
-        }
-
-        enum class BigOrSmallPlant {
-            BIG_PLANT, SMALL_PLANT, MEDIUM_PLANT
-        }
-
-        enum class ColorLeaf {
-            WHITE,
-            GREEN,
-            MULTI_COLORED
+        companion object PlantProps {
+            @JvmStatic
+            fun <T : Comparable<T>> rangeToString(range: ClosedRange<T>): String {
+                return "from ${range.start} to ${range.endInclusive}"
+            }
         }
     }
 
     val plants = mapOf(
         "Majesty palm" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 240u),
+            height = 300u .. 370u
         ),
         "Fiddle leaf ficus" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 230u),
+            height = 300u .. 370u
         ),
         "Giant bird of paradise" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 220u),
+            height = 300u .. 370u
         ),
         "Dragon tree" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 210u),
+            height = 300u .. 370u
         ),
         "ZZ Plant" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 210u),
+            height = 300u .. 370u
         ),
         "Ponytail palm" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 210u),
+            height = 300u .. 370u
         ),
         "Calathea makoyana" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 220u),
+            height = 300u .. 370u
         ),
         "Sansevieria (snake plant)" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 230u),
+            height = 300u .. 370u
         ),
         "Aloe vera" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 240u),
+            height = 300u .. 370u
         ),
         "Pothos" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 220u),
+            height = 300u .. 370u
         ),
         "Monstera deliciosa" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 230u),
+            height = 300u .. 370u
         ),
         "Cactus" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 240u),
+            height = 300u .. 370u
         ),
-        "Phalaenopsis" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+        "Phalaenopsis white" to PlantProps(
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(red = 255u, green = 255u, blue = 255u),
+            height = 300u .. 370u
         ),
         "Succulents" to PlantProps(
-            leafWidth = PlantProps.BroadOrNarrowLeaves.NARROW_LEAVES,
-            leafLength = PlantProps.LongOrShortLeaves.LONG_LEAVES,
-            leafColor = PlantProps.ColorLeaf.GREEN,
-            plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
+            width = 180u .. 240u,
+            leafLength = 5u .. 30u,
+            leafColor = Color(green = 210u),
+            height = 300u .. 370u
         )
     )
 
@@ -133,7 +142,6 @@ object PlantMap {
             sorted = false
         }
     }
-
     val plantList = ListWrapper(plants.keys.toList())
 
 }

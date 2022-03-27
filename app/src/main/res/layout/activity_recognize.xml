@@ -10,11 +10,8 @@
         android:id="@+id/scrollView2"
         android:layout_width="408dp"
         android:layout_height="676dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent">
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="51dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,40 +43,21 @@
                 android:text="Color:"
                 tools:layout_editor_absoluteX="1dp" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup5"
-                android:layout_width="409dp"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="100dp">
+            <SeekBar
+                android:id="@+id/red"
+                android:layout_width="260dp"
+                android:layout_height="21dp" />
 
-                <RadioButton
-                    android:id="@+id/radioButton1"
-                    android:layout_width="168dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:fontFamily="monospace"
-                    android:text="@string/white" />
+            <SeekBar
+                android:id="@+id/green"
+                android:layout_width="260dp"
+                android:layout_height="21dp" />
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="168dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:fontFamily="monospace"
-                    android:text="@string/green" />
 
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    android:layout_width="168dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:fontFamily="monospace"
-                    android:text="@string/multicolored" />
-
-            </RadioGroup>
+            <SeekBar
+                android:id="@+id/blue"
+                android:layout_width="260dp"
+                android:layout_height="21dp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -224,7 +202,6 @@
                 android:text="Recognize"
                 tools:layout_editor_absoluteX="146dp"
                 tools:layout_editor_absoluteY="72dp" />
-
         </LinearLayout>
     </ScrollView>
 

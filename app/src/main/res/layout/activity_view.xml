@@ -8,10 +8,51 @@
 
     <TextView
         android:id="@+id/plant_name_title"
-        android:layout_width="177dp"
-        android:layout_height="52dp"
+        android:layout_width="338dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="38dp"
         android:layout_marginTop="42dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="monospace"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="99dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="monospace"
+        android:text="Properties:"
+        app:layout_constraintBottom_toTopOf="@+id/properties"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ListView
+        android:id="@+id/properties"
+        android:layout_width="408dp"
+        android:layout_height="287dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plant_name_title"
+        app:srcCompat="@drawable/ic_launcher_background" />
 </androidx.constraintlayout.widget.ConstraintLayout>
