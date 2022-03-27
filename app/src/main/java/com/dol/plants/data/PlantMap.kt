@@ -113,4 +113,27 @@ object PlantMap {
             plantSize = PlantProps.BigOrSmallPlant.MEDIUM_PLANT
         )
     )
+
+
+    class ListWrapper(private val plantList: List<String>) {
+
+        var filterText: String = ""
+
+        var sorted: Boolean = false
+
+        fun get(): List<String> {
+            val filteredPlantList = plantList.filter { plantName ->
+                plantName.contains(other = filterText, ignoreCase = true)
+            }
+            return if (sorted) filteredPlantList.sorted() else filteredPlantList
+        }
+
+        fun reset() {
+            filterText = ""
+            sorted = false
+        }
+    }
+
+    val plantList = ListWrapper(plants.keys.toList())
+
 }
