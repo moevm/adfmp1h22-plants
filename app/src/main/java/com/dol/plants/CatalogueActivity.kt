@@ -12,6 +12,7 @@ class CatalogueActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalogue)
+
         val plantView = findViewById<ListView>(R.id.plant_list)
         plantView.adapter = ArrayAdapter(
             this,
@@ -40,7 +41,8 @@ class CatalogueActivity : AppCompatActivity() {
         plantView.setOnItemClickListener { _, _, i, _ ->
             val intent = Intent(that, ViewActivity::class.java)
             val bundle = Bundle()
-            bundle.putString("name", plantList.get()[i])
+            val name = plantList.get()[i]
+            bundle.putString("name", name)
             intent.putExtras(bundle)
             startActivity(intent)
         }
