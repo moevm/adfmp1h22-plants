@@ -1,13 +1,11 @@
 package com.dol.plants
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import com.dol.plants.data.PlantMap
+import com.dol.plants.data.PlantMap.plantList
 
 class CatalogueActivity : AppCompatActivity() {
 
@@ -18,30 +16,40 @@ class CatalogueActivity : AppCompatActivity() {
         plantView.adapter = ArrayAdapter(
             this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-            PlantMap.plantList.get()
+            plantList.get()
         )
 
         findViewById<EditText>(R.id.plantName).doOnTextChanged { text, _, _, _ ->
-            PlantMap.plantList.filterText = text.toString()
+            plantList.filterText = text.toString()
             plantView.adapter = ArrayAdapter(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                PlantMap.plantList.get()
+                plantList.get()
             )
         }
 
         findViewById<Button>(R.id.sort).setOnClickListener {
-            PlantMap.plantList.sorted = !PlantMap.plantList.sorted
+            plantList.sorted = !plantList.sorted
             plantView.adapter = ArrayAdapter(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                PlantMap.plantList.get()
+                plantList.get()
             )
+        }
+
+        plantView.setOnItemClickListener { _, _, i, _ ->
+            val intent = Intent(that, ViewActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("name", plantList.get()[i])
+            intent.putExtras(bundle)
+            startActivity(intent)
         }
     }
 
+    private val that = this
+
     override fun onBackPressed() {
-        PlantMap.plantList.reset()
+        plantList.reset()
         super.onBackPressed()
     }
 
