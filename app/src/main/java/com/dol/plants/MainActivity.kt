@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ||
                 ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_MEDIA_LOCATION)) {
 
-                // Здесь отображаете диалог с объяснением -- зачем
-                // Вашему приложению требуется данное разрешение.
-                // По кнопке "Ок" диалога запрашиваете разрешение.
-
             } else {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_MEDIA_LOCATION), 1)
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 2)
