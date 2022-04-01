@@ -8,11 +8,12 @@ import android.widget.EditText
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import com.dol.plants.data.PlantMap
+
+import com.dol.plants.data.PlantMap.ListWrapper
 
 abstract class ListActivity : AppCompatActivity() {
 
-    abstract val listWrapper: PlantMap.ListWrapper
+    abstract val listWrapper: ListWrapper
 
     abstract val layout: Int
 
@@ -53,6 +54,15 @@ abstract class ListActivity : AppCompatActivity() {
             intent.putExtras(bundle)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        findViewById<ListView>(R.id.plant_list).adapter = ArrayAdapter(
+            this,
+            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+            listWrapper.get()
+        )
+        super.onResume()
     }
 
     override fun onBackPressed() {
