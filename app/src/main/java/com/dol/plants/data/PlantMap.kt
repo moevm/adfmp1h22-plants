@@ -198,11 +198,8 @@ object PlantMap {
         }
     }
 
-    val visited = ArrayList<String>()
+    class HistoryWrapper(historyList: List<String>): ListWrapper(historyList.asReversed()) {
 
-    val plantList = ListWrapper(plants.keys.toList())
-
-    val historyList = object : ListWrapper(visited.asReversed()) {
         override fun get(): List<String> {
             return if (filterNSortIsNotSet())
                 super.get()
@@ -217,4 +214,10 @@ object PlantMap {
                 }
         }
     }
+
+    val visited = ArrayList<String>()
+
+    val plantList = ListWrapper(plants.keys.toList())
+
+    val historyList = HistoryWrapper(visited)
 }
