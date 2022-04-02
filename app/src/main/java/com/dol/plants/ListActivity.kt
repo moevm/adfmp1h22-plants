@@ -1,6 +1,7 @@
 package com.dol.plants
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -39,6 +40,12 @@ abstract class ListActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.sort).setOnClickListener {
             listWrapper.sorted = !listWrapper.sorted
+
+            if (listWrapper.sorted)
+                it.setBackgroundColor(Color.RED)
+            else
+                it.setBackgroundColor(Color.rgb(98,0,238))
+
             plantView.adapter = ArrayAdapter(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
@@ -68,14 +75,5 @@ abstract class ListActivity : AppCompatActivity() {
     override fun onBackPressed() {
         listWrapper.reset()
         super.onBackPressed()
-    }
-
-    companion object {
-        @JvmStatic
-        private fun getItems(listView: ListView): List<String> {
-            return (0 until listView.count)
-                .map { i -> listView.adapter.getItem(i) }
-                .map { item -> item.toString() }
-        }
     }
 }
