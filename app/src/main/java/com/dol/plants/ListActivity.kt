@@ -1,6 +1,8 @@
 package com.dol.plants
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -22,6 +24,7 @@ abstract class ListActivity : AppCompatActivity() {
         setContentView(layout)
 
         val plantView = findViewById<ListView>(R.id.plant_list)
+        val sortButton = findViewById<Button>(R.id.sort)
         plantView.adapter = ArrayAdapter(
             this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
@@ -39,6 +42,12 @@ abstract class ListActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.sort).setOnClickListener {
             listWrapper.sorted = !listWrapper.sorted
+
+            if (listWrapper.sorted)
+                it.setBackgroundColor(Color.RED)
+            else
+                it.setBackgroundColor(Color.rgb(98,0,238))
+
             plantView.adapter = ArrayAdapter(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
