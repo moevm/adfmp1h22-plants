@@ -2,15 +2,12 @@ package com.dol.plants
 
 import com.dol.plants.data.PlantMap.HistoryWrapper
 import com.dol.plants.data.PlantMap.ListWrapper
-import org.junit.Test
+import junit.framework.TestCase
 
-import org.junit.Assert.*
-
-class PlantMapTest {
+class PlantMapTest : TestCase() {
 
     private val list = listOf("Cactus", "Big pretty flower", "Ficus")
 
-    @Test
     fun correctFilterText() {
         val wrapper = ListWrapper(list)
         wrapper.filterText = "C"
@@ -18,7 +15,6 @@ class PlantMapTest {
         assertEquals(wrapper.get(), listOf("Cactus", "Ficus"))
     }
 
-    @Test
     fun correctCreatingHistory() {
         val visited = list.toMutableList()
         visited.add("Cactus")
@@ -27,7 +23,6 @@ class PlantMapTest {
         assertEquals(history.get(), listOf("Cactus", "Ficus", "Big pretty flower", "Cactus"))
     }
 
-    @Test
     fun correctFilterHistory() {
         val visited = list.toMutableList()
         visited.add("Cactus")
