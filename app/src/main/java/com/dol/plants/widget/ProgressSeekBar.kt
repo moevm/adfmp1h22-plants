@@ -5,7 +5,9 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.os.Build
 import android.util.AttributeSet
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatSeekBar
 
 
@@ -21,6 +23,7 @@ class ProgressSeekBar : AppCompatSeekBar {
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("DrawAllocation")
     override fun onDraw(c: Canvas) {
         super.onDraw(c)
@@ -29,6 +32,7 @@ class ProgressSeekBar : AppCompatSeekBar {
             val paint = Paint()
             paint.color = Color.GRAY
             paint.textSize = 20f
+            min
             val normalProgress = (progress - min).toFloat() / (max - min)
             c.drawText(
                 progress.toString(),
