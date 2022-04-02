@@ -2,7 +2,6 @@ package com.dol.plants
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -24,7 +23,6 @@ abstract class ListActivity : AppCompatActivity() {
         setContentView(layout)
 
         val plantView = findViewById<ListView>(R.id.plant_list)
-        val sortButton = findViewById<Button>(R.id.sort)
         plantView.adapter = ArrayAdapter(
             this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
@@ -77,14 +75,5 @@ abstract class ListActivity : AppCompatActivity() {
     override fun onBackPressed() {
         listWrapper.reset()
         super.onBackPressed()
-    }
-
-    companion object {
-        @JvmStatic
-        private fun getItems(listView: ListView): List<String> {
-            return (0 until listView.count)
-                .map { i -> listView.adapter.getItem(i) }
-                .map { item -> item.toString() }
-        }
     }
 }
